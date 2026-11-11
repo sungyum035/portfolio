@@ -1,0 +1,408 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <title>Korean College of Helicobacter and Upper Gastrointestinal Research</title>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+  <!-- style -->
+	<link href="./resources/css/jquery-ui.min.css" rel="stylesheet">
+	<link href="./resources/css/owl.carousel.min.css" rel="stylesheet">
+	<link href="./resources/css/owl.theme.default.css" rel="stylesheet">
+	<link href="./resources/css/common.css" rel="stylesheet">
+
+  <!-- script -->
+  <script src="./resources/js/jquery-1.12.0.min.js"></script>
+  <script src="./resources/js/TweenMax.min.js"></script>
+  <script src="./resources/js/owl.carousel.min.js"></script>
+  <script src="./resources/js/ui.js"></script>
+</head>
+
+<body>
+    <!-- header -->
+	<header>
+		<div class="inner">
+			<h1><a href="./index.html">Korean College of Helicobacter and Upper Gastrointestinal Research</a></h1>
+
+			<div class="util">
+				<a href="#" class="home">HOME</a>
+				<a href="#">LOGIN</a>
+				<a href="#">SIGN UP</a>
+			</div>
+
+			<div class="dDay">
+				<span>Today 2018.04.24</span>
+				<strong>D-DAY 90</strong>
+			</div>
+		</div>
+	</header>
+	<!-- //header -->
+
+	<!-- menu -->
+		<nav class="menu">
+			<ul class="gnb">
+				<li>
+					<a href="#" class="twoline">About Symposium</a>
+					<ul class="depth02">
+						<li><a href="#">Invitation</a></li>
+						<li><a href="#">Organization</a></li>
+						<li><a href="#">Symposium Information</a></li>
+						<li><a href="#">Venue</a></li>
+					</ul>
+				</li>
+				<li>
+					<a href="#" class="towline">Scientific Program</a>
+					<ul class="depth02">
+						<li><a href="#">Program at a Glance</a></li>
+						<li><a href="#">Program Details</a></li>
+						<li><a href="#">Invited Faculties</a></li>
+					</ul>
+				</li>
+				<li>
+					<a href="#">Abstract Submission</a>
+					<ul class="depth02">
+						<li><a href="#">Call for Abstracts</a></li>
+						<li><a href="#">Presentation Guidelines</a></li>
+						<li><a href="#">Online Submission</a></li>
+					</ul>
+				</li>
+				<li>
+					<a href="#">Registration</a>
+					<ul class="depth02">
+						<li><a href="#">How to Register</a></li>
+						<li><a href="#">Online Registration</a></li>
+					</ul>
+				</li>
+				<li><a href="#">Accommodation</a></li>
+				<li><a href="#">Sponsorship</a></li>
+				<li>
+					<a href="#">General Information</a>
+					<ul class="depth02">
+						<li><a href="#">Busan, Korea</a></li>
+						<li><a href="#">Visa Information</a></li>
+						<li><a href="#">Transportation</a></li>
+						<li><a href="#">General Information</a></li>
+					</ul>
+				</li>
+			</ul>
+		</nav>
+		<!-- //menu -->
+
+	<!-- contents -->
+	<section>
+		<!-- visual -->
+    <div class="main_top">
+    	<div class="visual_area">
+				<div class="is-show">
+					<div class="inner">
+						<img src="./resources/images/visual1.png" alt="" />	
+					</div>
+				</div>
+				<div>
+					<div class="inner">
+						<img src="./resources/images/visual2.png" alt="" />	
+					</div>
+				</div>
+			</div>
+		  <div class="inner">
+				<div class="btn_visual">
+					<a href="#" class="is-selected"></a>
+					<a href="#"></a>
+				</div>
+
+				<div class="topQuick">
+					<div class="date">
+						<h4>IMPORTANT DATES</h4>
+						<div class="left">
+							<p>Abstract  Submission<br />Deadline</p>
+							<strong>January 21, 2019</strong>
+						</div>
+						<div class="right">
+							<p>Pre-Registration<br />Deadline </p>
+							<strong>February 15, 2019</strong>
+						</div>
+					</div>
+					<div class="link">
+						<a href="#" class="link1">Abstract Submission</a>
+						<a href="#" class="link2">Online Registration</a>
+						<a href="#" class="link3">My page</a>
+						<a href="#" class="link4">Venue</a>
+					</div>
+				</div>
+      </div>
+      <!-- //inner end -->
+	
+			<a href="#" class="btn_visual_prev"></a>
+			<a href="#" class="btn_visual_next"></a>
+		
+			<script>
+				var timer = null;
+
+				$(".btn_visual a").on("click",function(e){
+					e.preventDefault();
+					clearInterval(timer);
+
+					var $btn = $(this);
+					var idx = $btn.index();
+
+					$(".btn_visual a").removeClass("is-selected");
+					$btn.addClass("is-selected");
+					$(".visual_area > div").fadeOut(200);
+					$(".visual_area > div").eq(idx).css("z-index",99).fadeIn(300,function(){
+						$(".is-show").css("z-index",0).removeClass("is-show").hide();
+						$(this).css("z-index",1).addClass("is-show");
+						timeset();
+					});
+				})
+				$(".btn_visual_prev").on("click",function(e){
+					if(doubleSubmitCheck()) return;
+					e.preventDefault();
+
+					setTimeout(function(){
+						doubleSubmitFlag = false;
+					}, 500);
+
+					var thisIdx = $(".is-selected").index();
+					if(thisIdx <= 0){
+						$(".btn_visual a:last").click();
+					}else{
+						$(".is-selected").prev().click();
+					}
+				})
+
+				$(".btn_visual_next").on("click",function(e){
+					if(doubleSubmitCheck()) return;
+					e.preventDefault();
+
+					setTimeout(function(){
+						doubleSubmitFlag = false;
+					}, 500);
+
+					var thisIdx = $(".is-selected").index();
+					if(thisIdx >= $(".btn_visual a").length-1){
+						$(".btn_visual a:first").click();
+					}else{
+						$(".is-selected").next().click();
+					}
+				})
+
+				var doubleSubmitFlag = false;
+			  function doubleSubmitCheck(){
+			  	console.log(doubleSubmitFlag);
+		      if(doubleSubmitFlag){
+	          return doubleSubmitFlag;
+		      }else{
+	          doubleSubmitFlag = true;
+	          return false;
+		      }
+			  }
+
+				timeset();
+				
+				function timeset(){
+					timer = setInterval(function(){$(".btn_visual_next").click()},3000);
+				}
+        </script>
+    </div>
+    <!-- //main top end -->
+	<div class="main_middle">
+		<div class="inner">
+			<div class="recentlyBoard">
+				<h4>What’s New</h4>
+				<ul>
+					<li>
+						<a href="#" class="new">
+							<div class="title">Abstract Submission Due Extended by..</div>
+							<div class="date">2018.07.26</div>
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<div class="title">On-line Registration Available!</div>
+							<div class="date">2018.07.26</div>
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<div class="title">Holiday Notice</div>
+							<div class="date">2018.07.26</div>
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<div class="title">Online Abstract Submission is Now...</div>
+							<div class="date">2018.07.26</div>
+						</a>
+					</li>
+				</ul>
+			</div>
+
+			<div class="bnInvited">
+				<h4>Invited Speakers</h4>
+				<div class="owl-carousel owl-theme">
+					<div class="item"><a href="#" target="_blank"><img src="./resources/images/imgInvited.jpg" alt="" /></a></div>
+					<div class="item"><a href="#" target="_blank"><img src="./resources/images/imgInvited.jpg" alt="" /></a></div>
+					<div class="item"><a href="#" target="_blank"><img src="./resources/images/imgInvited.jpg" alt="" /></a></div>
+				</div>
+			</div>
+
+			<script type="text/javascript">
+			$(function(){
+				var banner = $(".bnInvited .item").length;
+
+				console.log(banner)
+				if(banner == 2){
+					$('.bnInvited .owl-carousel').owlCarousel({
+						items:2,
+						loop:false,
+						nav:false,
+						autoplay:false,
+						dots:false,
+						responsive:false,
+						margin:16
+					});
+				}else if(banner > 2){
+					$('.bnInvited .owl-carousel').owlCarousel({
+						items:2,
+						loop:true,
+						nav:true,
+						autoplay:true,
+						autoplayTimeout:3000,
+						dots:false,
+						responsive:false,
+						margin:16
+					});
+				}
+			});
+			</script>
+
+			<div class="boxProgram">
+				<h4>Program at a Glance</h4>
+				<a href="#">Daily Program<strong>March, 8</strong></a>
+				<a href="#">Daily Program<strong>March, 9</strong></a>
+			</div>
+		</div>
+	</div>
+
+	<div class="main_banner">
+		<div class="inner">
+			<div class="left">
+				<div>
+					<h5>SPONSORSHIP</h5>
+					<div id="mainBanner1" class="owl-carousel owl-theme">
+						<div class="item"><a href="#" target="_blank"><img src="./resources/images/imgBanner.jpg" alt="" /></a></div>
+						<div class="item"><a href="#" target="_blank"><img src="./resources/images/imgBanner.jpg" alt="" /></a></div>
+						<div class="item"><a href="#" target="_blank"><img src="./resources/images/imgBanner.jpg" alt="" /></a></div>
+						<div class="item"><a href="#" target="_blank"><img src="./resources/images/imgBanner.jpg" alt="" /></a></div>
+						<div class="item"><a href="#" target="_blank"><img src="./resources/images/imgBanner.jpg" alt="" /></a></div>
+						<div class="item"><a href="#" target="_blank"><img src="./resources/images/imgBanner.jpg" alt="" /></a></div>
+					</div>
+				</div>
+				<div>
+					<h5>RELATED LINKS</h5>
+					<div id="mainBanner2" class="owl-carousel owl-theme">
+						<div class="item"><a href="#" target="_blank"><img src="./resources/images/bnAPDW2018.jpg" alt="" /></a></div>
+						<div class="item"><a href="#" target="_blank"><img src="./resources/images/bnAPDW2018.jpg" alt="" /></a></div>
+						<div class="item"><a href="#" target="_blank"><img src="./resources/images/bnAPDW2018.jpg" alt="" /></a></div>
+						<div class="item"><a href="#" target="_blank"><img src="./resources/images/bnAPDW2018.jpg" alt="" /></a></div>
+						<div class="item"><a href="#" target="_blank"><img src="./resources/images/bnAPDW2018.jpg" alt="" /></a></div>
+						<div class="item"><a href="#" target="_blank"><img src="./resources/images/bnAPDW2018.jpg" alt="" /></a></div>
+					</div>
+				</div>
+			</div>
+			<div class="right">
+				<div class="boxSelect">
+					<div class="select">Download</div>
+					<ul>
+						<li><a href="#" target="_blank">Download 1</a></li>
+						<li><a href="#" target="_blank">Download 2</a></li>
+						<li><a href="#" target="_blank">Download 3</a></li>
+					</ul>
+				</div>
+
+				<div class="boxSelect">
+					<div class="select">Newsletter</div>
+					<ul>
+						<li><a herf="#" target="_blank">Newsletter 1</a></li>
+						<li><a herf="#" target="_blank">Newsletter 2</a></li>
+						<li><a herf="#" target="_blank">Newsletter 3</a></li>
+					</ul>
+				</div>
+
+				<script type="text/javascript">
+				$(function(){
+					$(".boxSelect .select").on("click", function(){
+						$(this).siblings("ul").fadeIn(300);
+					});
+
+					$(".boxSelect ul li").on("click", function(){
+						var item = $(this).text();
+						$(this).parent().siblings(".select").text(item);
+
+						$(this).parent().fadeOut(300);
+					});
+				});
+				</script>
+			</div>
+		</div>
+		<!-- //inner end -->
+	</div>
+
+	<script type="text/javascript">
+	$(function(){
+		$(".main_banner .owl-carousel").each(function(){
+			var _len = $(this).find(".item").length;
+			var id = $(this).attr("id");
+			
+			if(_len > 3){
+				mainSlide2(id);
+			}else{
+				mainSlide1(id);
+			}
+		});
+		
+		function mainSlide1(id){
+			$("#"+id).owlCarousel({
+				items:3,
+				dots:false,
+				responsive:false,
+				margin:20
+			});	
+		}
+		function mainSlide2(id){
+			$("#"+id).owlCarousel({
+				items:3,
+				nav:true,
+				loop:true,
+				autoplay:true,
+				autoplayTimeout:2000,
+				dots:false,
+				responsive:false,
+				margin:20
+			});
+		}
+	});
+	</script>
+		<!-- footer -->
+  	<footer>
+			<div class="inner">
+				<strong>Organized by</strong>
+				<address>
+					The Korean College of Helicobacter and Upper Gastrointestinal Research.<br />
+					Room 305, Second Lotte Gold Rose) 31, Seolleung-ro 86-gil, Daechi-dong, Gangnam-gu, Seoul, 06193<br />
+					TEL : +82-2-565-9946 FAX : +82-2-565-9947 E-mail : hpylori@kams.or.kr
+				</address>
+			</div>
+			<div class="inner">
+				<strong>Secritariat : ConventionPM</strong>
+				<address>
+					TEL: +82-2-2269-4381  | FAX: +82-2-2269-4380  EMAIL: helicobacter@conventionpm.com
+				</address>
+			</div>
+		</footer>
+  	<!-- //footer -->
+	</section>
+	<!-- //contents -->
+</body>
+</html>
